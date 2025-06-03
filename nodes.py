@@ -338,7 +338,7 @@ def patched_convert_hunyuan_video_lora(original_state_dict):
         return {}
 
 
-class HyVideoModel(comfy.model_base.BaseModel):
+class HyVideoModel_PlusOne(comfy.model_base.BaseModel):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.pipeline = {}
@@ -351,7 +351,7 @@ class HyVideoModel(comfy.model_base.BaseModel):
         self.pipeline[k] = v
 
 
-class HyVideoModelConfig:
+class HyVideoModelConfig_PlusOne:
     def __init__(self, dtype):
         self.unet_config = {}
         self.unet_extra_config = {}
@@ -362,7 +362,7 @@ class HyVideoModelConfig:
         self.memory_usage_factor = 2.0
         self.unet_config["disable_unet_model_creation"] = True
 
-class FramePackTorchCompileSettings:
+class FramePackTorchCompileSettings_PlusOne:
     @classmethod
     def INPUT_TYPES(s):
         return {
@@ -397,7 +397,7 @@ class FramePackTorchCompileSettings:
         return (compile_args, )
 
 #region Model loading
-class DownloadAndLoadFramePackModel:
+class DownloadAndLoadFramePackModel_PlusOne:
     @classmethod
     def INPUT_TYPES(s):
         return {
@@ -469,7 +469,7 @@ class DownloadAndLoadFramePackModel:
         }
         return (pipe, )
 
-class FramePackLoraSelect:
+class FramePackLoraSelect_PlusOne:
     @classmethod
     def INPUT_TYPES(s):
         return {
@@ -505,7 +505,7 @@ class FramePackLoraSelect:
         loras_list.append(lora)
         return (loras_list,)
 
-class LoadFramePackModel:
+class LoadFramePackModel_PlusOne:
     @classmethod
     def INPUT_TYPES(s):
         return {
@@ -661,7 +661,7 @@ class LoadFramePackModel:
         }
         return (pipe, )
 
-class FramePackFindNearestBucket:
+class FramePackFindNearestBucket_PlusOne:
     @classmethod
     def INPUT_TYPES(s):
         return {"required": {
@@ -685,7 +685,7 @@ class FramePackFindNearestBucket:
         return (new_width, new_height, )
 
 
-class FramePackSampler:
+class FramePackSampler_PlusOne:
     @classmethod
     def INPUT_TYPES(s):
         return {
